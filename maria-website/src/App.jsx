@@ -7,13 +7,15 @@ import BrandsPage from "./pages/Brands";
 import Testimonials from "./pages/Testimonials";
 import OurClients from "./pages/OurClients";
 import Contact from "./pages/Contact";
+import maria from "./assets/images/Group.svg"
 
 export default function App() {
   return (
     <BrowserRouter>
       <nav className="navbar">
         <Link to="/">
-          <h2>Ophthalmic Store</h2>
+          {/* <h2>Ophthalmic Store</h2> */}
+          <img src={maria} alt="maria-logo" className="logo"/>
         </Link>
 
         <div>

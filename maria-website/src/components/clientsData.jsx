@@ -46,6 +46,11 @@ const clients = [
     name: "Dr Agarwals Eye Hospital",
     logo: "https://www.dragarwal.com/wp-content/uploads/2023/01/512-x-512px.jpg",
   },
+  {
+    id:10,
+    name: "Aravind Eye care Hospital",
+    logo: "https://aravind.org/wp-content/uploads/2019/12/Header-logo_650X70.png",
+  },
 ];
 
 export default clients;
