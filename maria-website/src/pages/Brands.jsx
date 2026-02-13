@@ -4,6 +4,7 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import StarIcon from "@mui/icons-material/Star";
 // import Heineimg from "../assets/images/heine-logo.svg";
 // import "./Brands.css";
+import Footer from "../pages/Footer";
 
 const brands = [
   {
@@ -42,6 +43,7 @@ const brands = [
 
 export default function BrandsPage() {
   return (
+    <>
     <main className="brands-page">
       {/* Page Header */}
       <header className="brands-header">
@@ -77,6 +79,8 @@ export default function BrandsPage() {
         </div>
       </section>
     </main>
+    <Footer />
+    </>
   );
 }
 

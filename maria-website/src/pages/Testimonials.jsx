@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import testimonials from "../components/testimonialsData";
 import OurClients from "./OurClients";
+import Footer from "./Footer";
 // import "./Testimonials.css";
 
 const Testimonials = () => {
@@ -52,6 +53,7 @@ const Testimonials = () => {
         ))}
       </Grid>
     </section>
+    <Footer />
     </>
   );
 };

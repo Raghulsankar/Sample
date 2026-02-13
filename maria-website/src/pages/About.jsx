@@ -5,9 +5,11 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import PublicIcon from "@mui/icons-material/Public";
 import aboutImg from "../assets/images/about.png";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export function About() {
   return (
+    <>
     <div className="about-container">
       {/* HERO SECTION */}
       <section className="about-hero">
@@ -75,5 +77,7 @@ export function About() {
         </p>
       </section>
     </div>
+    <Footer />
+    </>
   );
 }

@@ -14,7 +14,7 @@ export function DirectOphthalmoscope({ name, price, poster, details }) {
         </p>
 
         <p className="details">{details}</p>
-        <button className="details-btn">More Details</button>
+        <button className="details-btn">Add to Cart</button>
       </div>
     </div>
   );

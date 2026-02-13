@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export function Home() {
   return (
+    <>
     <div className="home">
       {/* Blur layer */}
       <div className="home-overlay"></div>
@@ -19,5 +21,7 @@ export function Home() {
         </Link>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
