@@ -142,6 +142,50 @@
 
 // newcode
 
+// import { useEffect, useState } from "react";
+// import { DirectOphthalmoscope } from "../components/DirectOphthalmoscope";
+
+// export function Products() {
+//   const [products, setProducts] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     fetch("https://6971d21f32c6bacb12c49d92.mockapi.io/products") // replace with real API
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setProducts(data);
+//         setLoading(false);
+//       })
+//       .catch((err) => {
+//         console.error("API Error:", err);
+//         setLoading(false);
+//       });
+//   }, []);
+
+//   if (loading) {
+//     return (
+//       <div className="loading-container">
+//         <div className="spinner"></div>
+//         <h2 className="loading-msg">Loading products...</h2>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="app">
+//       <h1>Our Products</h1>
+
+//       <div className="card-grid">
+//         {products.map((product) => (
+//           <DirectOphthalmoscope key={product.name} {...product} />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// new code
+
 import { useEffect, useState } from "react";
 import { DirectOphthalmoscope } from "../components/DirectOphthalmoscope";
 
@@ -149,8 +193,12 @@ export function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // ✅ FILTER STATES
+  const [search, setSearch] = useState("");
+  const [priceSort, setPriceSort] = useState("");
+
   useEffect(() => {
-    fetch("https://6971d21f32c6bacb12c49d92.mockapi.io/products") // replace with real API
+    fetch("https://6971d21f32c6bacb12c49d92.mockapi.io/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -161,6 +209,17 @@ export function Products() {
         setLoading(false);
       });
   }, []);
+
+  // ✅ FILTER LOGIC
+  const filteredProducts = products
+    .filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (priceSort === "low") return Number(a.price) - Number(b.price);
+      if (priceSort === "high") return Number(b.price) - Number(a.price);
+      return 0;
+    });
 
   if (loading) {
     return (
@@ -175,9 +234,26 @@ export function Products() {
     <div className="app">
       <h1>Our Products</h1>
 
+      {/* ✅ FILTER SECTION */}
+      <div className="filter-section">
+        <input
+          type="text"
+          placeholder="Search product..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <select onChange={(e) => setPriceSort(e.target.value)}>
+          <option value="">Sort by Price</option>
+          <option value="low">Low to High</option>
+          <option value="high">High to Low</option>
+        </select>
+      </div>
+
+      {/* PRODUCT GRID */}
       <div className="card-grid">
-        {products.map((product) => (
-          <DirectOphthalmoscope key={product.name} {...product} />
+        {filteredProducts.map((product) => (
+          <DirectOphthalmoscope key={product.id} {...product} />
         ))}
       </div>
     </div>
