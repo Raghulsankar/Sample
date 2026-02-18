@@ -1,4 +1,5 @@
-export function DirectOphthalmoscope({ name, price, poster, details }) {
+import { Link } from "react-router-dom";
+export function DirectOphthalmoscope({ id,name, price, poster, details }) {
   return (
     <div className="card">
       <img src={poster} alt={name} className="card-img" />
@@ -14,7 +15,9 @@ export function DirectOphthalmoscope({ name, price, poster, details }) {
         </p>
 
         <p className="details">{details}</p>
-        <button className="details-btn">Add to Cart</button>
+         <Link to={`/products/${id}`}>
+          <button className="details-btn">View Product</button>
+        </Link>
       </div>
     </div>
   );
