@@ -193,6 +193,7 @@ export function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [brand, setBrand] = useState("all");
+  const [category, setCategory] = useState("all");
 
   // ✅ FILTER STATES
   const [search, setSearch] = useState("");
@@ -217,6 +218,9 @@ export function Products() {
       product.name.toLowerCase().includes(search.toLowerCase()),
     )
     .filter((product) => (brand === "all" ? true : product.brand === brand))
+    .filter((product) =>
+      category === "all" ? true : product.category === category,
+    )
     .sort((a, b) => {
       if (priceSort === "low") return Number(a.price) - Number(b.price);
       if (priceSort === "high") return Number(b.price) - Number(a.price);
@@ -253,6 +257,15 @@ export function Products() {
             <option value="volk">Volk</option>
             <option value="keeler">Keeler</option>
             <option value="zeiss">Zeiss</option>
+          </select>
+
+          <select onChange={(e) => setCategory(e.target.value)}>
+            <option value="all">All Categories</option>
+            <option value="ido">IDO</option>
+            <option value="ophthalmoscope">Ophthalmoscope</option>
+            <option value="retinoscope">Retinoscope</option>
+            <option value="lens">Lens</option>
+            <option value="slitlamp">Slit Lamp</option>
           </select>
 
           <select onChange={(e) => setPriceSort(e.target.value)}>
