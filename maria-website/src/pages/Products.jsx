@@ -192,13 +192,14 @@ import { DirectOphthalmoscope } from "../components/DirectOphthalmoscope";
 export function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [brand, setBrand] = useState("all");
 
   // ✅ FILTER STATES
   const [search, setSearch] = useState("");
   const [priceSort, setPriceSort] = useState("");
 
   useEffect(() => {
-    fetch("https://6971d21f32c6bacb12c49d92.mockapi.io/products")
+    fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -213,8 +214,9 @@ export function Products() {
   // ✅ FILTER LOGIC
   const filteredProducts = products
     .filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase())
+      product.name.toLowerCase().includes(search.toLowerCase()),
     )
+    .filter((product) => (brand === "all" ? true : product.brand === brand))
     .sort((a, b) => {
       if (priceSort === "low") return Number(a.price) - Number(b.price);
       if (priceSort === "high") return Number(b.price) - Number(a.price);
@@ -236,18 +238,29 @@ export function Products() {
 
       {/* ✅ FILTER SECTION */}
       <div className="filter-section">
-        <input
-          type="text"
-          placeholder="Search product..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="filter-section">
+          <input
+            type="text"
+            placeholder="Search product..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
-        <select onChange={(e) => setPriceSort(e.target.value)}>
-          <option value="">Sort by Price</option>
-          <option value="low">Low to High</option>
-          <option value="high">High to Low</option>
-        </select>
+          <select onChange={(e) => setBrand(e.target.value)}>
+            <option value="all">All Brands</option>
+            <option value="heine">Heine</option>
+            <option value="welchallyn">Welch Allyn</option>
+            <option value="volk">Volk</option>
+            <option value="keeler">Keeler</option>
+            <option value="zeiss">Zeiss</option>
+          </select>
+
+          <select onChange={(e) => setPriceSort(e.target.value)}>
+            <option value="">Sort by Price</option>
+            <option value="low">Low to High</option>
+            <option value="high">High to Low</option>
+          </select>
+        </div>
       </div>
 
       {/* PRODUCT GRID */}

@@ -5,9 +5,10 @@ import "./index.css";
 import { About } from "./pages/About";
 import BrandsPage from "./pages/Brands";
 import Testimonials from "./pages/Testimonials";
-import OurClients from "./pages/OurClients";
+// import OurClients from "./pages/OurClients";
 import Contact from "./pages/Contact";
-import maria from "./assets/images/Group.svg"
+import maria from "./assets/images/Group.svg";
+import ProductDetails from "./pages/ProductDetails";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
       <nav className="navbar">
         <Link to="/">
           {/* <h2>Ophthalmic Store</h2> */}
-          <img src={maria} alt="maria-logo" className="logo"/>
+          <img src={maria} alt="maria-logo" className="logo" />
         </Link>
 
         <div>
@@ -26,6 +27,7 @@ export default function App() {
           {/* <Link to="/clients">clients</Link> */}
           <Link to="/Trusted-By">Trusted By</Link>
           <Link to="/contact">Contact Us</Link>
+          {/* <Link to={`/products/${Products.id}`}>View Details</Link> */}
         </div>
         {/* <button className="primary-contact-btn">Contact Us</button> */}
         <button className="contact-btn">Get in Touch</button>
@@ -39,8 +41,8 @@ export default function App() {
         <Route path="/Trusted-By" element={<Testimonials />} />
         {/* <Route path="/clients" element={<OurClients />} /> */}
         <Route path="/contact" element={<Contact />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </BrowserRouter>
   );
 }
-

@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import contactImg from "../assets/images/contact-us.jpg";
+import Footer from "./Footer";
 
 const Contact = () => {
   const formik = useFormik({
@@ -35,6 +36,7 @@ const Contact = () => {
   });
 
   return (
+    <>
     <div className="contact-wrapper">
       {/* LEFT SIDE - IMAGE */}
       <div className="contact-image">
@@ -117,6 +119,8 @@ const Contact = () => {
         </form>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
