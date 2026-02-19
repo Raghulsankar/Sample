@@ -9,6 +9,7 @@ import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import maria from "./assets/images/Group.svg";
 import ProductDetails from "./pages/ProductDetails";
+import { AddProduct } from "./pages/AddProduct";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           {/* <Link to="/clients">clients</Link> */}
           <Link to="/Trusted-By">Trusted By</Link>
           <Link to="/contact">Contact Us</Link>
+          <Link to="/add-product">Add product</Link>
           {/* <Link to={`/products/${Products.id}`}>View Details</Link> */}
         </div>
         {/* <button className="primary-contact-btn">Contact Us</button> */}
@@ -42,6 +44,7 @@ export default function App() {
         {/* <Route path="/clients" element={<OurClients />} /> */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/add-product" element={<AddProduct />} />
       </Routes>
     </BrowserRouter>
   );

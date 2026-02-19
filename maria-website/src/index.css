@@ -1045,3 +1045,72 @@ h1 {
   text-align: center;
   color: black;
 }
+
+
+/* AddProduct  styles */
+
+.add-product-container {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-items: center ;
+}
+
+.add-product-container input,
+.add-product-container textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.add-product-container button {
+  padding: 10px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.error {
+  color: red;
+  font-size: 13px;
+  margin: 4px 0 10px;
+}
+
+.add-product-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  background-color: #f5f7fa;
+}
+
+.add-product-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-container input,
+.add-product-container textarea,
+.add-product-container button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.add-product-container {
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.add-product-container{
+  color: #020617;
+}
+   
