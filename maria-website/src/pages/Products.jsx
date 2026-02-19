@@ -188,6 +188,7 @@
 
 import { useEffect, useState } from "react";
 import { DirectOphthalmoscope } from "../components/DirectOphthalmoscope";
+import Footer from "./Footer";
 
 export function Products() {
   const [products, setProducts] = useState([]);
@@ -198,6 +199,21 @@ export function Products() {
   // ✅ FILTER STATES
   const [search, setSearch] = useState("");
   const [priceSort, setPriceSort] = useState("");
+
+  const deleteProduct = (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+
+    if (!confirmDelete) return;
+
+    fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        // Remove deleted product from state
+        setProducts(products.filter((product) => product.id !== id));
+      })
+      .catch((err) => console.error("Delete Error:", err));
+  };
 
   useEffect(() => {
     fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products`)
@@ -275,11 +291,14 @@ export function Products() {
           </select>
         </div>
       </div>
-
-      {/* PRODUCT GRID */}
+      
       <div className="card-grid">
         {filteredProducts.map((product) => (
-          <DirectOphthalmoscope key={product.id} {...product} />
+          <DirectOphthalmoscope
+            key={product.id}
+            {...product}
+            onDelete={deleteProduct}
+          />
         ))}
       </div>
     </div>

@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
-export function DirectOphthalmoscope({ id,name, price, poster, details }) {
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import DeleteIcon from "@mui/icons-material/Delete";
+
+export function DirectOphthalmoscope({
+  id,
+  name,
+  price,
+  poster,
+  details,
+  onDelete,
+}) {
   return (
     <div className="card">
       <img src={poster} alt={name} className="card-img" />
@@ -15,9 +25,28 @@ export function DirectOphthalmoscope({ id,name, price, poster, details }) {
         </p>
 
         <p className="details">{details}</p>
-         <Link to={`/products/${id}`}>
-          <button className="details-btn">View Product</button>
-        </Link>
+
+        {/* <div className="card-buttons">
+          <Link to={`/products/${id}`}>
+            <button className="details-btn">View Product</button>
+          </Link>
+
+          <button className="delete-btn" onClick={() => onDelete(id)}>
+            Delete
+          </button>
+        </div> */}
+
+        <div className="card-buttons">
+          <Link to={`/products/${id}`} className="icon-link">
+            <button className="icon-btn view-btn">
+              <VisibilityIcon />
+            </button>
+          </Link>
+
+          <button className="icon-btn delete-btn" onClick={() => onDelete(id)}>
+            <DeleteIcon />
+          </button>
+        </div>
       </div>
     </div>
   );
