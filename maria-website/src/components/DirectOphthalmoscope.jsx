@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+
 
 export function DirectOphthalmoscope({
   id,
@@ -46,8 +49,13 @@ export function DirectOphthalmoscope({
           <button className="icon-btn delete-btn" onClick={() => onDelete(id)}>
             <DeleteIcon />
           </button>
+
+          <Link to={`/product/edit/${id}`}>
+            <button className="icon-btn edit-btn"><EditIcon /></button>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
+

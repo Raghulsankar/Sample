@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import maria from "./assets/images/Group.svg";
 import ProductDetails from "./pages/ProductDetails";
 import { AddProduct } from "./pages/AddProduct";
+import { EditProduct } from "./pages/EditProduct";
 
 export default function App() {
   return (
@@ -45,6 +46,8 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/add-product" element={<AddProduct />} />
+        <Route path="/product/edit/:id" element={<EditProduct />} />
+        
       </Routes>
     </BrowserRouter>
   );

@@ -1132,7 +1132,7 @@ h1 {
   display: flex;
   justify-content: center;   /* horizontal center */
   align-items: center;       /* vertical center */
-  background-color: #f5f7fa;
+  background-color: #0f172a;
 }
 
 .add-product-container {
@@ -1160,5 +1160,18 @@ h1 {
 
 .add-product-container{
   color: #020617;
+}
+
+
+/* Edit icon styles */
+
+.edit-btn {
+  background-color: #19b6d2;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #1296a0;
+  transform: scale(1.1);
 }
 
