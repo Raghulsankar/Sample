@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import EditIcon from "@mui/icons-material/Edit";
 
 export function EditProduct() {
   const { id } = useParams(); // get id from URL
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
@@ -25,6 +30,22 @@ export function EditProduct() {
   }, [id]);
 
   // ✅ Update product
+  // const updateProduct = () => {
+  //   const updatedProduct = {
+  //     name,
+  //     poster,
+  //     price: Number(price),
+  //     details,
+  //     brand,
+  //   };
+
+  //   fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`, {
+  //     method: "PUT", // or PATCH
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(updatedProduct),
+  //   }).then(() => navigate("/products"));
+  // };
+
   const updateProduct = () => {
     const updatedProduct = {
       name,
@@ -35,10 +56,16 @@ export function EditProduct() {
     };
 
     fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`, {
-      method: "PUT", // or PATCH
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedProduct),
-    }).then(() => navigate("/products"));
+    }).then(() => {
+      setOpen(true); // 🔥 show success popup
+
+      setTimeout(() => {
+        navigate("/products");
+      }, 1500);
+    });
   };
 
   return (
@@ -71,7 +98,25 @@ export function EditProduct() {
         placeholder="Details"
       />
 
-      <button onClick={updateProduct}>Update Product</button>
+      {/* <button onClick={updateProduct}>Update Product</button> */}
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={<EditIcon />}
+        onClick={updateProduct}
+      >
+        Update Product
+      </Button>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <MuiAlert elevation={6} variant="filled" severity="success">
+          Product updated successfully!
+        </MuiAlert>
+      </Snackbar>
     </div>
   );
 }
