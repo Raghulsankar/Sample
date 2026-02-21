@@ -11,7 +11,7 @@ import maria from "./assets/images/Group.svg";
 import ProductDetails from "./pages/ProductDetails";
 import { AddProduct } from "./pages/AddProduct";
 import { EditProduct } from "./pages/EditProduct";
-
+import { Dashboard } from "./pages/Dashboard";
 export default function App() {
   return (
     <BrowserRouter>
@@ -30,6 +30,8 @@ export default function App() {
           <Link to="/Trusted-By">Trusted By</Link>
           <Link to="/contact">Contact Us</Link>
           <Link to="/add-product">Add product</Link>
+          <Link to="/dashboard">Dashboard</Link>
+
           {/* <Link to={`/products/${Products.id}`}>View Details</Link> */}
         </div>
         {/* <button className="primary-contact-btn">Contact Us</button> */}
@@ -47,6 +49,8 @@ export default function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/product/edit/:id" element={<EditProduct />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
         
       </Routes>
     </BrowserRouter>
