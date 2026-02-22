@@ -4,7 +4,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 
-
 export function DirectOphthalmoscope({
   id,
   name,
@@ -51,7 +50,9 @@ export function DirectOphthalmoscope({
           </button>
 
           <Link to={`/product/edit/${id}`}>
-            <button className="icon-btn edit-btn"><EditIcon /></button>
+            <button className="icon-btn edit-btn">
+              <EditIcon />
+            </button>
           </Link>
         </div>
       </div>
