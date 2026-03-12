@@ -1,0 +1,187 @@
+/* .buy-container{
+  display:flex;
+  gap:40px;
+  padding:40px;
+}
+
+.product-section{
+  width:40%;
+}
+
+.product-section img{
+  width:20rem;
+  border-radius:10px;
+  height: 20rem;
+}
+
+.qty{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:10px;
+}
+
+.qty button{
+  padding:5px 12px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-color: #0a3d62;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.address-section{
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.address-section input,
+.address-section textarea{
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+.buy-btn{
+  background:#0077b6;
+  color:white;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.buy-btn:hover{
+  background:#023e8a;
+} */
+
+.buy-wrapper{
+    display:flex;
+    gap:40px;
+    padding:40px;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* PRODUCT SIDE */
+
+.buy-product{
+    flex:1;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.buy-product img{
+    width:100%;
+    max-height:350px;
+    object-fit:contain;
+}
+
+.product-info{
+    margin-top:20px;
+}
+
+.brand{
+    color:gray;
+}
+
+.price{
+    font-size:24px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.qty-box{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.qty-box button{
+    width:50px;
+    height:50px;
+    border:none;
+    background:#173f5f;   /* dark blue like image */
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    border-radius:8px;    /* rounded corners */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.qty-box button:hover{
+    background:#0f2e45;   /* darker hover */
+}
+
+.qty-box span{
+    font-size:24px;
+    font-weight:bold;
+    min-width:30px;
+    text-align:center;
+}
+.qty{
+    color: rgba(0, 0, 0, 0.923);
+}
+
+
+/* ADDRESS SIDE */
+
+.buy-address{
+    flex:1;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.buy-address h2{
+    margin-bottom:20px;
+}
+
+.buy-address input,
+.buy-address textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.buy-address textarea{
+    height:80px;
+}
+
+.order-summary{
+    font-size:20px;
+    margin:20px 0;
+    color: #22c55e;
+}
+
+.order-btn{
+    width:100%;
+    padding:12px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    font-size:16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.order-btn:hover{
+    background:#0077b6;
+}
+
+.shipping-details{
+    color: rgba(0, 0, 0, 0.7);
+}

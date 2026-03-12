@@ -12,6 +12,9 @@ import ProductDetails from "./pages/ProductDetails";
 import { AddProduct } from "./pages/AddProduct";
 import { EditProduct } from "./pages/EditProduct";
 import { Dashboard } from "./pages/Dashboard";
+import Cart from "./pages/Cart";
+import { FaShoppingCart } from "react-icons/fa";
+import BuyNow from "./pages/BuyNow";
 export default function App() {
   return (
     <BrowserRouter>
@@ -32,6 +35,11 @@ export default function App() {
           <Link to="/add-product">Add product</Link>
           <Link to="/dashboard">Dashboard</Link>
 
+          <Link to="/cart" className="cart-link">
+            <FaShoppingCart size={20} />
+          </Link>
+
+
           {/* <Link to={`/products/${Products.id}`}>View Details</Link> */}
         </div>
         {/* <button className="primary-contact-btn">Contact Us</button> */}
@@ -50,8 +58,9 @@ export default function App() {
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/product/edit/:id" element={<EditProduct />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
-        
+        <Route path="/edit/:id" element={<EditProduct />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/buynow/:id" element={<BuyNow />} />
       </Routes>
     </BrowserRouter>
   );
