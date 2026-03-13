@@ -117,27 +117,27 @@ function BuyNow() {
   const [qty, setQty] = useState(1);
 
   const formatPrice = (price) => {
-  if (!price) return "0.00";
+    if (!price) return "0.00";
 
-  return Number(price).toLocaleString("en-IN", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-};
+    return Number(price).toLocaleString("en-IN", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
 
   const [address, setAddress] = useState({
     name: "",
     phone: "",
     address: "",
     city: "",
-    pincode: ""
+    pincode: "",
   });
 
-  useEffect(() => {
-    fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data));
-  }, [id]);
+    useEffect(() => {
+      fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`)
+        .then((res) => res.json())
+        .then((data) => setProduct(data));
+    }, [id]);
 
   const handleChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
@@ -148,7 +148,7 @@ function BuyNow() {
       product,
       qty,
       address,
-      total: product.price * qty
+      total: product.price * qty,
     };
 
     console.log(order);
@@ -159,7 +159,6 @@ function BuyNow() {
 
   return (
     <div className="buy-wrapper">
-
       {/* LEFT SIDE PRODUCT */}
       <div className="buy-product">
         <img src={product.poster} alt={product.product_name} />
@@ -177,10 +176,8 @@ function BuyNow() {
         </div>
       </div>
 
-
       {/* RIGHT SIDE ADDRESS */}
       <div className="buy-address">
-
         <h2 className="shipping-details">Shipping Details</h2>
 
         <input
@@ -224,9 +221,7 @@ function BuyNow() {
         <button className="order-btn" onClick={placeOrder}>
           Place Order
         </button>
-
       </div>
-
     </div>
   );
 }
