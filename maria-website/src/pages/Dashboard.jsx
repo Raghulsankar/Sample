@@ -33,6 +33,22 @@ export function Dashboard() {
   //       <Bar dataKey="value" fill="#38bdf8" radius={[8, 8, 0, 0]} />
   //     </BarChart>
   //   </div>;
+
+  //  const [totalOrders, setTotalOrders] = useState(0);
+
+  // useEffect(() => {
+  //   const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  //   setTotalOrders(orders.length);
+  // }, []);
+//   const [totalOrders, setTotalOrders] = useState(() => {
+//   const orders = JSON.parse(localStorage.getItem("orders")) || [];
+//   return orders.length;
+// });
+
+const [totalOrders] = useState(() => {
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  return orders.length;
+});
   
 
   const deleteProduct = (id) => {
@@ -136,7 +152,7 @@ const deleteBtn = {
         </div>
 
         <div className="card-box">
-          <h2>120</h2>
+          <h2>{totalOrders}</h2>
           <p>Total Orders</p>
         </div>
 

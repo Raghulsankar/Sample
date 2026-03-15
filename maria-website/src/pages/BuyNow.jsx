@@ -551,19 +551,46 @@ function BuyNow() {
     0
   );
 
-  const placeOrder = () => {
-    const order = {
-      items,
-      address,
-      total: totalPrice,
-    };
+//   const placeOrder = () => {
+//     const order = {
+//       items,
+//       address,
+//       total: totalPrice,
+//     };
 
-    console.log("Order Placed:", order);
+//     console.log("Order Placed:", order);
 
-    alert("Order Placed Successfully 🎉");
+//     alert("Order Placed Successfully 🎉");
 
-    localStorage.removeItem("cart");
+//     localStorage.removeItem("cart");
+//   };
+
+
+const placeOrder = () => {
+  const order = {
+    id: Date.now(),
+    items,
+    address,
+    total: totalPrice,
+    date: new Date().toLocaleString(),
   };
+
+  // Get existing orders
+  const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  // Add new order
+  existingOrders.push(order);
+
+  // Save back to localStorage
+  localStorage.setItem("orders", JSON.stringify(existingOrders));
+
+  console.log("Order Placed:", order);
+
+  alert("Order Placed Successfully 🎉");
+
+  // clear cart
+  localStorage.removeItem("cart");
+};
 
   if (loading) {
     return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
