@@ -565,10 +565,10 @@ function BuyNow() {
 //     localStorage.removeItem("cart");
 //   };
 
-
 const placeOrder = () => {
   const order = {
-    id: Date.now(),
+    // id: Date.now(),
+    id: "ORD-" + Date.now(),
     items,
     address,
     total: totalPrice,
