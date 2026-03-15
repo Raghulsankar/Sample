@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaPlus } from "react-icons/fa";
 import {
   BarChart,
   Bar,
@@ -40,57 +41,55 @@ export function Dashboard() {
   //   const orders = JSON.parse(localStorage.getItem("orders")) || [];
   //   setTotalOrders(orders.length);
   // }, []);
-//   const [totalOrders, setTotalOrders] = useState(() => {
-//   const orders = JSON.parse(localStorage.getItem("orders")) || [];
-//   return orders.length;
-// });
+  //   const [totalOrders, setTotalOrders] = useState(() => {
+  //   const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  //   return orders.length;
+  // });
 
-const [totalOrders] = useState(() => {
-  const orders = JSON.parse(localStorage.getItem("orders")) || [];
-  return orders.length;
-});
-  
+  const [totalOrders] = useState(() => {
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    return orders.length;
+  });
 
   const deleteProduct = (id) => {
-  if (!window.confirm("Are you sure you want to delete this product?"))
-    return;
+    if (!window.confirm("Are you sure you want to delete this product?"))
+      return;
 
-  fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`, {
-    method: "DELETE",
-  }).then(() => {
-    setProducts(products.filter((product) => product.id !== id));
-  });
-};
+    fetch(`https://6971d21f32c6bacb12c49d92.mockapi.io/products/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setProducts(products.filter((product) => product.id !== id));
+    });
+  };
 
-const thStyle = {
-  padding: "12px",
-  borderBottom: "1px solid #334155",
-};
+  const thStyle = {
+    padding: "12px",
+    borderBottom: "1px solid #334155",
+  };
 
-const tdStyle = {
-  padding: "10px",
-  borderBottom: "1px solid #334155",
-};
+  const tdStyle = {
+    padding: "10px",
+    borderBottom: "1px solid #334155",
+  };
 
-const editBtn = {
-  padding: "6px 12px",
-  marginRight: "8px",
-  background: "#22c55e",
-  border: "none",
-  borderRadius: "4px",
-  cursor: "pointer",
-  color: "#fff",
-};
+  const editBtn = {
+    padding: "6px 12px",
+    marginRight: "8px",
+    background: "#22c55e",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    color: "#fff",
+  };
 
-const deleteBtn = {
-  padding: "6px 12px",
-  background: "#e11d48",
-  border: "none",
-  borderRadius: "4px",
-  cursor: "pointer",
-  color: "#fff",
-};
-
+  const deleteBtn = {
+    padding: "6px 12px",
+    background: "#e11d48",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    color: "#fff",
+  };
 
   const brandData = Object.values(
     products.reduce((acc, product) => {
@@ -213,69 +212,79 @@ const deleteBtn = {
       </div>
 
       <div style={{ marginTop: "80px" }}>
-  <h2 style={{ marginBottom: "20px" }}>Product Details</h2>
+        <div className="product-header">
+          <h2 style={{ marginBottom: "20px" }}>Product Details</h2>
 
-  <table className="custom-table"
-    style={{
-      width: "100%",
-      borderCollapse: "collapse",
-      background: "#111",
-      color: "#fff",
-    }}
-  >
-    <thead>
-      <tr style={{ background: "#1e293b" }}>
-        <th style={thStyle}>Name</th>
-        <th style={thStyle}>Image</th>
-        <th style={thStyle}>Price</th>
-        <th style={thStyle}>Brand</th>
-        <th style={thStyle}>Category</th>
-        <th style={thStyle}>Actions</th>
-      </tr>
-    </thead>
+          <button
+            className="add-product-btn"
+            onClick={() => navigate("/add-product")}
+          >
+            <FaPlus /> Add Product
+          </button>
+        </div>
 
-    <tbody>
-      {products.map((product) => (
-        <tr key={product.id} style={{ textAlign: "center" }}>
-          <td style={tdStyle}>{product.name}</td>
+        <table
+          className="custom-table"
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            background: "#111",
+            color: "#fff",
+          }}
+        >
+          <thead>
+            <tr style={{ background: "#1e293b" }}>
+              <th style={thStyle}>Name</th>
+              <th style={thStyle}>Image</th>
+              <th style={thStyle}>Price</th>
+              <th style={thStyle}>Brand</th>
+              <th style={thStyle}>Category</th>
+              <th style={thStyle}>Actions</th>
+            </tr>
+          </thead>
 
-          <td style={tdStyle}>
-            <img
-              src={product.poster}
-              alt={product.name}
-              width="50"
-              style={{ borderRadius: "6px" }}
-            />
-          </td>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.id} style={{ textAlign: "center" }}>
+                <td style={tdStyle}>{product.name}</td>
 
-          <td style={tdStyle}>
-            ₹ {Number(product.price).toLocaleString("en-IN")}
-          </td>
+                <td style={tdStyle}>
+                  <img
+                    src={product.poster}
+                    alt={product.name}
+                    width="50"
+                    style={{ borderRadius: "6px" }}
+                  />
+                </td>
 
-          <td style={tdStyle}>{product.brand}</td>
+                <td style={tdStyle}>
+                  ₹ {Number(product.price).toLocaleString("en-IN")}
+                </td>
 
-          <td style={tdStyle}>{product.category}</td>
+                <td style={tdStyle}>{product.brand}</td>
 
-          <td style={tdStyle}>
-            <button
-  onClick={() => navigate(`/edit/${product.id}`)}   
-  style={editBtn}
->
-  Edit
-</button>
+                <td style={tdStyle}>{product.category}</td>
 
-            <button
-              onClick={() => deleteProduct(product.id)}
-              style={deleteBtn}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+                <td style={tdStyle}>
+                  <button
+                    onClick={() => navigate(`/edit/${product.id}`)}
+                    style={editBtn}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() => deleteProduct(product.id)}
+                    style={deleteBtn}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
