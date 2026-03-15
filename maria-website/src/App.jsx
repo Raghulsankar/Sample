@@ -61,6 +61,7 @@ export default function App() {
         <Route path="/edit/:id" element={<EditProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/buynow/:id" element={<BuyNow />} />
+        <Route path="/buynow" element={<BuyNow />} />
       </Routes>
     </BrowserRouter>
   );

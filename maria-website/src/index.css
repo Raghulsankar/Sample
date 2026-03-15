@@ -1227,3 +1227,36 @@ h1 {
   padding: 20px;
   border-radius: 12px;
 }
+
+
+
+
+
+
+/* dashboard table style */
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  background: #0f172a;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.custom-table th {
+  background: #1e293b;
+  padding: 14px;
+  text-align: center;
+}
+
+.custom-table td {
+  padding: 12px;
+  border-bottom: 1px solid #334155;
+}
+
+.custom-table tr:hover {
+  background: #1e293b;
+  transition: 0.3s;
+}

@@ -6,6 +6,59 @@ function ProductDetails() {
   const { id } = useParams(); // get id from URL
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+
+  // const handleAddToCart = () => {
+  //   const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  //   const productIndex = existingCart.findIndex(
+  //     (item) => item.id === product.id
+  //   );
+
+  //   if (productIndex !== -1) {
+  //     // Product already in cart → increase quantity
+  //     existingCart[productIndex].quantity += quantity;
+  //   } else {
+  //     // Product not in cart → add with quantity 1 (or selected quantity)
+  //     existingCart.push({
+  //       ...product,
+  //       quantity: quantity > 0 ? quantity : 1,
+  //     });
+  //   }
+
+  //   localStorage.setItem("cart", JSON.stringify(existingCart));
+
+  //   alert("Product added to cart ✅");
+
+  //   // Optional: reset quantity to 1 after adding
+  //   setQuantity(1);
+  // };
+
+  const handleAddToCart = () => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const productIndex = existingCart.findIndex(
+      (item) => item.id === product.id,
+    );
+
+    if (productIndex !== -1) {
+      existingCart[productIndex].quantity += quantity > 0 ? quantity : 1;
+    } else {
+      existingCart.push({
+        ...product,
+        quantity: quantity > 0 ? quantity : 1,
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+
+    alert("Product added to cart ✅");
+
+    setQuantity(1);
+
+    // ✅ Navigate to cart page
+    navigate("/cart");
+  };
+
   const [quantity, setQuantity] = useState(1);
   const increaseQty = () => {
     setQuantity(quantity + 1);
@@ -76,8 +129,17 @@ function ProductDetails() {
           </div>
 
           <div className="product-buttons">
-            <button className="add-cart-btn">Add to Cart</button>
-            <button className="buy-now-btn">Buy Now</button>
+            {/* <button className="add-cart-btn">Add to Cart</button> */}
+            <button className="add-cart-btn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+            {/* <button className="buy-now-btn">Buy Now</button> */}
+            <button
+              className="buy-now-btn"
+              onClick={() => navigate(`/buynow/${product.id}`)}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
