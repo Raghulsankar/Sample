@@ -15,6 +15,8 @@ import { Dashboard } from "./pages/Dashboard";
 import Cart from "./pages/Cart";
 import { FaShoppingCart } from "react-icons/fa";
 import BuyNow from "./pages/BuyNow";
+import LoginSignup from "./pages/LoginSignup";
+import Orders from "./pages/Orders";
 export default function App() {
   return (
     <BrowserRouter>
@@ -34,16 +36,19 @@ export default function App() {
           <Link to="/contact">Contact Us</Link>
           <Link to="/add-product">Add product</Link>
           <Link to="/dashboard">Dashboard</Link>
+          <Link to="/orders">My Orders</Link>
+          {/* <Link to="/login">Login</Link> */}
 
           <Link to="/cart" className="cart-link">
             <FaShoppingCart size={20} />
           </Link>
 
-
           {/* <Link to={`/products/${Products.id}`}>View Details</Link> */}
         </div>
         {/* <button className="primary-contact-btn">Contact Us</button> */}
-        <button className="contact-btn">Get in Touch</button>
+        <Link to="/login">
+          <button className="contact-btn">Get in Touch</button>
+        </Link>
       </nav>
 
       <Routes>
@@ -62,6 +67,8 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/buynow/:id" element={<BuyNow />} />
         <Route path="/buynow" element={<BuyNow />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/login" element={<LoginSignup />} />
       </Routes>
     </BrowserRouter>
   );
