@@ -28,11 +28,26 @@ const Contact = () => {
         .min(10, "Minimum 10 characters")
         .required("Message is required"),
     }),
+    // onSubmit: (values, { resetForm }) => {
+    //   console.log("Form Data:", values);
+    //   alert("Your enquiry has been submitted successfully!");
+    //   resetForm();
+    // },
     onSubmit: (values, { resetForm }) => {
-      console.log("Form Data:", values);
-      alert("Your enquiry has been submitted successfully!");
-      resetForm();
-    },
+  // Get existing enquiries from localStorage
+  const existingData = JSON.parse(localStorage.getItem("enquiries")) || [];
+
+  // Add new enquiry
+  const updatedData = [...existingData, values];
+
+  // Store back to localStorage
+  localStorage.setItem("enquiries", JSON.stringify(updatedData));
+
+  console.log("Stored Data:", updatedData);
+
+  alert("Your enquiry has been submitted successfully!");
+  resetForm();
+},
   });
 
   return (

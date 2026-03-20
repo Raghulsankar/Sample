@@ -18,6 +18,7 @@ export function Dashboard() {
   const [products, setProducts] = useState([]);
   const COLORS = ["#38bdf8", "#22c55e", "#f97316", "#e11d48", "#a855f7"];
   const navigate = useNavigate();
+  const [totalEnquiries, setTotalEnquiries] = useState(0);
   //   const chartData = [
   //     { name: "Direct", value: 12 },
   //     { name: "Indirect", value: 8 },
@@ -45,6 +46,21 @@ export function Dashboard() {
   //   const orders = JSON.parse(localStorage.getItem("orders")) || [];
   //   return orders.length;
   // });
+
+  useEffect(() => {
+  const updateEnquiryCount = () => {
+    const enquiries = JSON.parse(localStorage.getItem("enquiries")) || [];
+    setTotalEnquiries(enquiries.length);
+  };
+
+  updateEnquiryCount();
+
+  window.addEventListener("storage", updateEnquiryCount);
+
+  return () => {
+    window.removeEventListener("storage", updateEnquiryCount);
+  };
+}, []);
 
   const [totalOrders] = useState(() => {
     const orders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -147,7 +163,7 @@ export function Dashboard() {
 
         <div className="card-box">
           <h2>₹ {totalRevenue.toLocaleString("en-IN")}</h2>
-          <p>Total Revenue</p>
+          <p>Total Invesment of products</p>
         </div>
 
         <div className="card-box">
@@ -156,8 +172,8 @@ export function Dashboard() {
         </div>
 
         <div className="card-box">
-          <h2>45</h2>
-          <p>Total Users</p>
+          <h2>{totalEnquiries}</h2>
+          <p>Total Enquireys</p>
         </div>
       </div>
 
@@ -181,7 +197,7 @@ export function Dashboard() {
 
           {/* Pie Chart */}
           <div className="chart-box">
-            <h2>Revenue Per Brand</h2>
+            <h2>Invesment Per Brand</h2>
 
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
